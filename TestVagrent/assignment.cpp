@@ -1,16 +1,13 @@
-#include <iostream>
-#include <vector>
-#include <string>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-class Newspaper {
+class Mysubscription {
 public:
     string name;
     vector<double> dailyPrices;
     double weeklyCost;
 
-    Newspaper(string name, vector<double> dailyPrices) : name(name), dailyPrices(dailyPrices) {
+    Mysubscription(string name, vector<double> dailyPrices) : name(name), dailyPrices(dailyPrices) {
         weeklyCost = 0;
         for (double price : dailyPrices) {
             weeklyCost += price;
@@ -19,12 +16,12 @@ public:
 };
 
 int main() {
-    vector<Newspaper> newspapers = {
-        Newspaper("TOI", {3, 3, 3, 3, 3, 5, 6}),
-        Newspaper("Hindu", {2.5, 2.5, 2.5, 2.5, 2.5, 4, 4}),
-        Newspaper("ET", {4, 4, 4, 4, 4, 4, 10}),
-        Newspaper("BM", {1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5}),
-        Newspaper("HT", {2, 2, 2, 2, 2, 4, 4})
+    vector<Mysubscription> newspapers = {
+        Mysubscription("TOI", {3, 3, 3, 3, 3, 5, 6}),
+        Mysubscription("Hindu", {2.5, 2.5, 2.5, 2.5, 2.5, 4, 4}),
+        Mysubscription("ET", {4, 4, 4, 4, 4, 4, 10}),
+        Mysubscription("BM", {1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5}),
+        Mysubscription("HT", {2, 2, 2, 2, 2, 4, 4})
     };
 
     double budget;
