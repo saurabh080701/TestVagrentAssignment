@@ -13,33 +13,48 @@ public:
             weeklyCost += price;
         }
     }
+
+    bool isWithinBudget(double budget) {
+        return weeklyCost <= budget;
+    }
+};
+
+class SubscriptionManager {
+public:
+    vector<Mysubscription> newspapers;
+
+    SubscriptionManager(vector<Mysubscription> newspapers) : newspapers(newspapers) {}
+
+    void printSubscriptionsWithinBudget(double budget) {
+        cout << "Possible combinations of two newspaper subscriptions for your budget: " << endl;
+        bool first = true;
+        for (int i = 0; i < newspapers.size(); i++) {
+            for (int j = i + 1; j < newspapers.size(); j++) {
+                if (newspapers[i].isWithinBudget(budget - newspapers[j].weeklyCost)) {
+                    if (!first) cout << ", ";
+                    cout << "{\"" << newspapers[i].name << "\", \"" << newspapers[j].name << "\"}";
+                    first = false;
+                }
+            }
+        }
+        cout << endl;
+    }
 };
 
 int main() {
-    vector<Mysubscription> newspapers = {
+    SubscriptionManager manager({
         Mysubscription("TOI", {3, 3, 3, 3, 3, 5, 6}),
         Mysubscription("Hindu", {2.5, 2.5, 2.5, 2.5, 2.5, 4, 4}),
         Mysubscription("ET", {4, 4, 4, 4, 4, 4, 10}),
         Mysubscription("BM", {1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5}),
         Mysubscription("HT", {2, 2, 2, 2, 2, 4, 4})
-    };
+    });
 
     double budget;
     cout << "Enter your weekly budget: ";
     cin >> budget;
 
-    cout << "Possible combinations of two newspaper subscriptions for your budget: " << endl;
-    bool first = true;
-    for (int i = 0; i < newspapers.size(); i++) {
-        for (int j = i + 1; j < newspapers.size(); j++) {
-            if (newspapers[i].weeklyCost + newspapers[j].weeklyCost <= budget) {
-                if (!first) cout << ", ";
-                cout << "{\"" << newspapers[i].name << "\", \"" << newspapers[j].name << "\"}";
-                first = false;
-            }
-        }
-    }
-    cout << endl;
+    manager.printSubscriptionsWithinBudget(budget);
 
     return 0;
 }
