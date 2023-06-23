@@ -26,7 +26,7 @@ public:
     SubscriptionManager(vector<Mysubscription> newspapers) : newspapers(newspapers) {}
 
     void printSubscriptionsWithinBudget(double budget) {
-        cout << "Possible combinations of two newspaper subscriptions for your budget: " << endl;
+        cout << "Combinations of two newspaper subscriptions in a budget: " << endl;
         bool first = true;
         for (int i = 0; i < newspapers.size(); i++) {
             for (int j = i + 1; j < newspapers.size(); j++) {
@@ -51,7 +51,7 @@ int main() {
     });
 
     double budget;
-    cout << "Enter your weekly budget: ";
+    cout << "Enter the weekly budget: ";
     cin >> budget;
 
     manager.printSubscriptionsWithinBudget(budget);
