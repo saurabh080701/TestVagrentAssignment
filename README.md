@@ -1,29 +1,22 @@
 # TestVagrentAssignment
-## My Subscriptions
+## Code Explanation
 
-We want to build an intelligent system that can calculate the weekly subscription expenses of
-essential items for a household. For the sake of this assignment, we will go with the weekly
-newspaper subscription. The following table demonstrates the prices of some of the prominent
-newspapers on a daily basis, all prices in Indian rupees.
-Please do not accept the below data from the command line/console, rather use a suitable data
-structure to store the below values (class/struct).
+This C++ code uses object-oriented programming (OOP) concepts to calculate and print out all possible combinations of two newspaper subscriptions that are within a given weekly budget.
 
-Monday Tuesday Wednesday Thursday Friday Saturday Sunday
-TOI 3 3 3 3 3 5 6
-Hindu 2.5 2.5 2.5 2.5 2.5 4 4
-ET 4 4 4 4 4 4 10
-BM 1.5 1.5 1.5 1.5 1.5 1.5 1.5
-HT 2 2 2 2 2 4 4
+The code defines two classes-> Mysubscription and SubscriptionManager.
 
-The input to the program should be the weekly budget/amount that the user has allocated to his
-subscriptions. The output must be all possible combinations of newspaper subscriptions for
-the user's budget.
-Example input/output combination:
-Input Expected Output
-40 {“TOI”, “BM”}, {“BM”, “HT”}, {“Hindu”, “BM”}, {“Hindu”, “HT”}
-35 {“BM”, “HT”}, {“Hindu”, “BM”}
+The Mysubscription class represents a newspaper subscription. It has three data members: name, dailyPrices, and weeklyCost. The name member stores the name of the newspaper, the dailyPrices member stores the daily prices of the newspaper in a vector, and the weeklyCost member stores the total weekly cost of the newspaper.
 
-Evaluation Criteria:
-● The data structure to hold the details of all newspaper subscription details.
-● Efficiency of the logic to calculate the possible combination of subscriptions
-● Readable and modular code
+The Mysubscription class also has a constructor that takes in the name and daily prices of the newspaper and initializes the object’s data members accordingly. The constructor also calculates the total weekly cost of the newspaper by summing up its daily prices.
+
+The Mysubscription class also has an isWithinBudget() method that takes in a budget value and returns true if the weekly cost of the newspaper is within the given budget and false otherwise.
+
+The SubscriptionManager class manages a collection of Mysubscription objects representing different newspaper subscriptions. It has a constructor that takes in a vector of Mysubscription objects and initializes the object’s newspapers data member accordingly.
+
+The SubscriptionManager class also has a printSubscriptionsWithinBudget() method that takes in a budget value and prints out all possible combinations of two newspaper subscriptions that are within the given budget. This method uses the isWithinBudget() method of the Mysubscription class to check if each pair of newspapers is within the user’s budget.
+
+In the main() function of the program:
+
+I create a SubscriptionManager object and pass in a list of Mysubscription objects representing different newspaper subscriptions.
+The program then prompts the user to enter their weekly budget.
+Finally, I call the printSubscriptionsWithinBudget() method of the SubscriptionManager object to print out all possible combinations of two newspaper subscriptions that are within the user’s budget.
